@@ -25,3 +25,8 @@ hs_err_pid*
 # build files
 build
 nbproject
+build.xml
+manifest.mf
+ColaCalc.iml
+.idea/
+target/
