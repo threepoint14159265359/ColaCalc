@@ -30,6 +30,14 @@ pipeline {
         always {
             junit 'target/surefire-reports/*.xml'
             archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
+            publishHTML (target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'target/surefire-reports',
+                reportFiles: 'index.html',
+                reportName: "Test Report"
+            ])
         }
     }
 }
