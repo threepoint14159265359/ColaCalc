@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkstyle ') {
             steps {
-                sh 'mvn checkstyle:check' 
+                sh 'mvn checkstyle:check'
             }
         }
 
