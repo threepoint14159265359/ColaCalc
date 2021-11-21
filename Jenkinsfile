@@ -2,17 +2,18 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean') {
+            steps {
+                sh 'mvn clean' 
+            }
+        }
+
         stage('Checkstyle ') {
             steps {
                 sh 'mvn checkstyle:check'
             }
         }
 
-        stage('Clean') {
-            steps {
-                sh 'mvn clean' 
-            }
-        }
         stage('Build') {
             steps {
                 sh 'mvn compile' 
