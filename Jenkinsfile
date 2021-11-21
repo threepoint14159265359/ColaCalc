@@ -21,7 +21,7 @@ pipeline {
 
         stage('package') {
             steps {
-                sh 'mvn package' 
+                sh 'mvn package -Dmaven.javadoc.skip=true'
             }
         }
     }
@@ -29,6 +29,7 @@ pipeline {
     post {
         always {
             junit 'target/surefire-reports/*.xml'
+            sh 'mvn javadoc:jar'
             archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
             publishHTML (target: [
                 allowMissing: false,
