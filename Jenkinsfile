@@ -29,6 +29,7 @@ pipeline {
     post {
         always {
             junit 'target/surefire-reports/*.xml'
+            sh 'mvn javadoc:javadoc'
             archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
             publishHTML (target: [
                 allowMissing: false,
@@ -38,7 +39,6 @@ pipeline {
                 reportFiles: 'index.html',
                 reportName: "Test Report"
             ])
-            sh 'mvn javadoc:javadoc'
         }
     }
 }
