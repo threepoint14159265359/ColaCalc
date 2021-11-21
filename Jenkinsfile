@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkstyle ') {
+            steps {
+                sh 'mvn checkstyle:check' 
+            }
+        }
+
         stage('Clean') {
             steps {
                 sh 'mvn clean' 
