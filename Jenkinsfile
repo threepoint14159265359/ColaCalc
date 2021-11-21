@@ -7,6 +7,13 @@ pipeline {
                 sh 'mvn clean' 
             }
         }
+
+        stage('Checkstyle ') {
+            steps {
+                sh 'mvn checkstyle:check'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'mvn compile' 
