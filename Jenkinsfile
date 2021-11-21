@@ -29,7 +29,7 @@ pipeline {
     post {
         always {
             junit 'target/surefire-reports/*.xml'
-            sh 'mvn javadoc:javadoc'
+            sh 'mvn javadoc:java'
             archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
             publishHTML (target: [
                 allowMissing: false,
