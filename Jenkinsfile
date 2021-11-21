@@ -21,7 +21,7 @@ pipeline {
 
         stage('package') {
             steps {
-                sh 'mvn package' 
+                sh 'mvn package -Dmaven.javadoc.skip=true'
             }
         }
     }
@@ -38,6 +38,7 @@ pipeline {
                 reportFiles: 'index.html',
                 reportName: "Test Report"
             ])
+            sh 'mvn javadoc:javadoc'
         }
     }
 }
