@@ -23,7 +23,7 @@ public class PrimeNumbersTest {
     void checkIsPrime4(){
         try {
             PrimeNumbers primeNumbers = new PrimeNumbers(4);
-            assertEquals(true,primeNumbers.isPrime());
+            assertEquals(false,primeNumbers.isPrime());
         }
         catch (LengthOutOfRangeException e){
             e.printStackTrace();
