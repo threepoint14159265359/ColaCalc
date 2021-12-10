@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package windows;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import javax.swing.*;
-import java.awt.event.*;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
 
 
 /**
@@ -58,7 +58,7 @@ public final class MainWindow extends JFrame implements ActionListener{
         this.windowNote.setFont(new Font("Serif", Font.BOLD, 30));
         
         //create background image
-        ImageIcon temp = new ImageIcon("Images/bg2.jpg");
+        ImageIcon temp = new ImageIcon(getImage("Images/bg2.jpg"));
         this.bgImage = temp.getImage();
         this.bgImageIcon = new ImageIcon(bgImage.getScaledInstance(600, 500, Image.SCALE_SMOOTH));
         this.bgImageLabel = new JLabel(this.bgImageIcon);
@@ -120,6 +120,11 @@ public final class MainWindow extends JFrame implements ActionListener{
             this.dispose();
             new BasicGeometry();
         }
+    }
+
+    public static Image getImage(final String pathAndFileName) {
+        final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
+        return Toolkit.getDefaultToolkit().getImage(url);
     }
     
     

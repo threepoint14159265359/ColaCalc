@@ -1,15 +1,14 @@
 
 package windows;
+
 import colacalc.exceptions.LengthOutOfRangeException;
 import colacalc.shape.NFibonacci;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
 
 
 public class FibonacciWindow extends JFrame implements ActionListener{
@@ -43,7 +42,7 @@ public class FibonacciWindow extends JFrame implements ActionListener{
         this.resultLabel.setBorder(BorderFactory.createDashedBorder(Color.CYAN));
         
         
-        ImageIcon temp = new ImageIcon("Images/bg2.jpg");
+        ImageIcon temp = new ImageIcon(getImage("Images/bg2.jpg"));
         this.bgImage = temp.getImage();
         this.bgImageIcon = new ImageIcon(bgImage.getScaledInstance(600, 500, Image.SCALE_SMOOTH));
         this.bgImageLabel = new JLabel(this.bgImageIcon);
@@ -92,6 +91,10 @@ public class FibonacciWindow extends JFrame implements ActionListener{
             }
             
         }
+    }
+    public static Image getImage(final String pathAndFileName) {
+        final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
+        return Toolkit.getDefaultToolkit().getImage(url);
     }
     
     

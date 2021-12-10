@@ -5,23 +5,15 @@
  */
 package windows;
 
-import colacalc.exceptions.LengthOutOfRangeException; //custom exception
-import colacalc.exceptions.PDiagonalOutOfRangeException; //custom exception
-import colacalc.exceptions.QDiagonalOutOfRangeException; //custom exception
-import colacalc.exceptions.RadiusOutOfRangeException; //custom excetpion
-import colacalc.exceptions.WidthOutOfRangeException; //custom exception
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
+import colacalc.exceptions.*;
+import colacalc.shape.Rectangle;
+import colacalc.shape.*;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import colacalc.shape.*; //imports custome classes
-import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
+import java.net.URL;
 
 
 
@@ -73,7 +65,7 @@ public class BasicGeometry extends JFrame implements ActionListener{
         
         
         //add background image
-        ImageIcon temp = new ImageIcon("Images/bg2.jpg");
+        ImageIcon temp = new ImageIcon(getImage("Images/bg2.jpg"));
         this.bgImage = temp.getImage();
         this.bgImageIcon = new ImageIcon(bgImage.getScaledInstance(600, 500, Image.SCALE_SMOOTH));
         this.bgImageLabel = new JLabel(this.bgImageIcon);
@@ -211,5 +203,10 @@ public class BasicGeometry extends JFrame implements ActionListener{
             }
         }
         
-    }       
+    }
+
+    public static Image getImage(final String pathAndFileName) {
+        final URL url = Thread.currentThread().getContextClassLoader().getResource(pathAndFileName);
+        return Toolkit.getDefaultToolkit().getImage(url);
+    }
 }
